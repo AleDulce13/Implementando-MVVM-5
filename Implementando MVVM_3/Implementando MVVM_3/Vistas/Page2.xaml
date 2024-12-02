@@ -3,31 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Implementando_MVVM_3.Vistas.Page2">
     <Grid>
-        <Image />
-        <CollectionView ItemsSource="{Binding listausuarios}"
-                    VerticalOptions="Center"
-                    Margin="20,80,20,0">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                             Span="1"
-                             VerticalItemSpacing="20"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame CornerRadius="15"
-                       BackgroundColor="#00DE87"
-                       >
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding Imagen}"
-                           HeightRequest="100"/>
-                            <Label Text="{Binding Nombre}"
-                           VerticalOptions="Center"
-                           FontSize="20"
-                           FontAttributes="Bold"/>
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Image Source="flecha-izquierda.png" 
+            VerticalOptions="Start"
+           HeightRequest="50"
+           HorizontalOptions="Start"
+           Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
     </Grid>
 </ContentPage>

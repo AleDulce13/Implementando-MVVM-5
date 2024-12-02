@@ -31,7 +31,7 @@ namespace Implementando_MVVM_3.VistaModel
         #endregion
         #region PROCESOS
 
-        public async Task ProcesoAsyncrono()
+         public async Task ProcesoAsyncrono()
         {
 
         }

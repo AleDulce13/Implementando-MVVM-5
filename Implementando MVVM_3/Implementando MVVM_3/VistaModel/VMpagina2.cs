@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Implementando_MVVM_3.VistaModel
@@ -22,9 +24,20 @@ namespace Implementando_MVVM_3.VistaModel
             Navigation = navigation;
             MostrarUsuarios();
         }
+        public async Task Volver()
+        {
+        }
+
+
+        public async Task Alerta(Musuarios parametros)
+        {
+            await DisplayAlert("Titulo", parametros.Nombre, "OK");
+        }
 
         #region COMANDOS 
 
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
         public void MostrarUsuarios()
         {
             listaUsuarios = new List<Musuarios> {
@@ -32,19 +45,19 @@ namespace Implementando_MVVM_3.VistaModel
                 new Musuarios
                 {
                     Nombre = "Chimmy",
-                    Imagen = "https://ibb.co/pzk0zVM"
+                    Imagen = "https://ibb.co/fNLJWPg"
                 },
 
                 new Musuarios
                 {
                     Nombre = "Cooky",
-                    Imagen = "https://ibb.co/Xb28rn7"
+                    Imagen = "https://ibb.co/W2f0CTq"
                 },
 
                 new Musuarios
                 {
                     Nombre = "Van",
-                    Imagen = "https://ibb.co/GvZcXrq"
+                    Imagen = "https://ibb.co/QXGrdNY"
                 }
             };
         }
