@@ -11,9 +11,9 @@ namespace Implementando_MVVM_3.VistaModel
 {
     public class VMmenuprincipal : BaseViewModel
     {
-        #region VARIABLES
-        string _Texto;
+        private string _Texto;
         public List<Mmenuprincipal> listaUsuarios { get; set; }
+
         #region CONSTRUCTOR
         public VMmenuprincipal()
         {
@@ -26,39 +26,41 @@ namespace Implementando_MVVM_3.VistaModel
             Navigation = navigation;
             MostrarUsuarios();
         }
-        public async Task Volver()
-        {
-        }
-
-
-        public async Task Alerta(Musuarios parametros)
-        {
-            await DisplayAlert("Titulo", parametros.Nombre, "OK");
-        }
 
         #region COMANDOS 
+        public async Task Volver()
+        {
 
-        public ICommand Volvercommand => new Command(async () => await Volver());
-        public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
+        }
+
+
+       // public async Task Alerta(Musuarios parametros)
+        //{
+           // await DisplayAlert("Titulo", parametros.Nombre, "OK");
+        //}
+
+       // public ICommand Volvercommand => new Command(async () => await Volver());
+        //public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
+
         public void MostrarUsuarios()
         {
             listaUsuarios = new List<Mmenuprincipal> {
 
                 new Mmenuprincipal
                 {
-                    Pagina = "Chimmy",
+                    Pagina = "Entry, datepicker, picker, label, navegacion",
                     Icono = "https://ibb.co/fNLJWPg"
                 },
 
                 new Mmenuprincipal
                 {
-                    Pagina = "Cooky",
+                    Pagina = "CollectionView sin enlace a Base de datos",
                     Icono = "https://ibb.co/W2f0CTq"
                 },
 
                 new Mmenuprincipal
                 {
-                    Pagina = "Van",
+                    Pagina = "Crud pokemon",
                     Icono = "https://ibb.co/QXGrdNY"
                 }
             };
@@ -91,5 +93,4 @@ namespace Implementando_MVVM_3.VistaModel
             public string Icono { get; set; }
         }
     }
-    #endregion
 }

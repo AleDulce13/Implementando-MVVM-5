@@ -11,7 +11,7 @@ namespace Implementando_MVVM_3
         {
             InitializeComponent();
 
-            MainPage = new pagina1();
+            MainPage = new NavigationPage (new Menuprincipal());
         }
 
         protected override void OnStart()

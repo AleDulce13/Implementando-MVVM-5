@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Implementando_MVVM_3.Vistas.Pagina2">
     <Grid>
-        <Image />
+        <Image Source="flecha-izquierda.png" 
+            VerticalOptions="Start"
+           HeightRequest="50"
+           HorizontalOptions="Start"
+           Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
         <CollectionView ItemsSource="{Binding listausuarios}"
                   VerticalOptions="Center"
                   Margin="20,80,20,0"

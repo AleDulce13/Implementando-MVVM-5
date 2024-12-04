@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Implementando_MVVM_3.VistaModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Implementando_MVVM_3.Vistas
 		public Menuprincipal ()
 		{
 			InitializeComponent ();
-		}
+            BindingContext = new VMmenuprincipal(Navigation);
+        }
 	}
 }
