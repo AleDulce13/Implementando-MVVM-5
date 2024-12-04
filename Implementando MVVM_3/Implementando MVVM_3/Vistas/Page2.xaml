@@ -4,7 +4,7 @@
              x:Class="Implementando_MVVM_3.Vistas.Page2"
              NavigationPage.HasNavigationBar="False">
     <Grid>
-        <Image Source="flecha-izquierda.png" 
+        <Image Source="circulo-de-flecha.png" 
             VerticalOptions="Start"
            HeightRequest="50"
            HorizontalOptions="Start"

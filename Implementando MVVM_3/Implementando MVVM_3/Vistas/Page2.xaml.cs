@@ -15,6 +15,7 @@ namespace Implementando_MVVM_3.Vistas
         public Page2()
         {
             InitializeComponent();
+            BindingContext = new VMpage2(Navigation);
         }
     }
 }
