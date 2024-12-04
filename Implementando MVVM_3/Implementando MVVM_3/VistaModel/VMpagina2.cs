@@ -11,8 +11,11 @@ namespace Implementando_MVVM_3.VistaModel
     public class VMpagina2 : BaseViewModel
     {
         private string _Texto;
+
         public List<Musuarios> listaUsuarios { get; set; }
+
         #region CONSTRUCTOR
+
         public VMpagina2()
         {
             MostrarUsuarios();
@@ -24,20 +27,9 @@ namespace Implementando_MVVM_3.VistaModel
             Navigation = navigation;
             MostrarUsuarios();
         }
-        public async Task Volver()
-        {
-        }
-
-
-        public async Task Alerta(Musuarios parametros)
-        {
-            await DisplayAlert("Titulo", parametros.Nombre, "OK");
-        }
 
         #region COMANDOS 
-
-        public ICommand Volvercommand => new Command(async () => await Volver());
-        public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
+   
         public void MostrarUsuarios()
         {
             listaUsuarios = new List<Musuarios> {
@@ -61,6 +53,28 @@ namespace Implementando_MVVM_3.VistaModel
                 }
             };
         }
+
+        public async Task Volver()
+        {
+
+        }
+
+        public ICommand Volvercommand => new Command(async () => await Volver());
+
+        public async Task Alerta(Musuarios parametros)
+        {
+            await DisplayAlert("Titulo", parametros.Nombre, "OK");
+        }
+
+        public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
     }
     #endregion
+
+    public class Musuarios
+    {
+        public string Nombre { get; set; }
+
+        public string Imagen { get; set; }
+
+    }
 }

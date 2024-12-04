@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Implementando_MVVM_3.Vistas;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Implementando_MVVM_3.VistaModel
 {
-    internal class VMpagina1 : BaseViewModel
+    public class VMpagina1 : BaseViewModel
     {
         #region VARIABLES
 
@@ -23,7 +24,9 @@ namespace Implementando_MVVM_3.VistaModel
         }
 
         #endregion
+
         #region OBJETOS
+
         public string N1
         {
             get { return _N1; }
@@ -49,9 +52,9 @@ namespace Implementando_MVVM_3.VistaModel
         #endregion
         #region PROCESOS
 
-        public async Task Procesoasync()
+        public async Task NavegarPagina2()
         {
-
+            await Navigation.PushAsync(new Page2());
         }
 
         public void Sumar()
@@ -75,7 +78,7 @@ namespace Implementando_MVVM_3.VistaModel
 
         #region COMANDOS
 
-        public ICommand Procesoasyncommand => new Command(async () => await Procesoasync());
+        public ICommand PNavegarPagina2command => new Command(async () => await NavegarPagina2());
         public ICommand Suymarcommand => new Command(Sumar);
         #endregion
     }

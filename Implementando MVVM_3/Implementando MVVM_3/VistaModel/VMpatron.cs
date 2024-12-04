@@ -12,7 +12,7 @@ namespace Implementando_MVVM_3.VistaModel
         #region VARIABLES
         string _Texto;
         #endregion
-        #region CONTRUCTOR
+        #region CONTSRUCTOR
 
         public VMpatron(INavigation navigation)
         {
