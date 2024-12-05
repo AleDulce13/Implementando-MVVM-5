@@ -10,8 +10,11 @@ namespace Implementando_MVVM_3.VistaModel
     internal class VMpatron : BaseViewModel
     {
         #region VARIABLES
+
         string _Texto;
+
         #endregion
+
         #region CONTSRUCTOR
 
         public VMpatron(INavigation navigation)
@@ -20,6 +23,7 @@ namespace Implementando_MVVM_3.VistaModel
         }
 
         #endregion
+
         #region OBJETOS
 
         public string Texto

@@ -11,26 +11,33 @@ namespace Implementando_MVVM_3.VistaModel
 {
     public class VMmenuprincipal : BaseViewModel
     {
-        private string _Texto;
-        public List<Mmenuprincipal> listaUsuarios { get; set; }
+        #region VARIABLES
 
-        #region CONSTRUCTOR
-        public VMmenuprincipal()
-        {
-            MostrarUsuarios();
-        }
+        private string _Texto;
+        public List<MenuPrincipal> listapaginas { get; set; }
+
         #endregion
 
+        #region CONSTRUCTOR
         public VMmenuprincipal(INavigation navigation)
         {
             Navigation = navigation;
-            MostrarUsuarios();
+            MostrarPaginas();
         }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
 
         #region COMANDOS 
         public async Task Volver()
         {
-
+            await Navigation.PopAsync();
         }
 
 
@@ -42,23 +49,23 @@ namespace Implementando_MVVM_3.VistaModel
        // public ICommand Volvercommand => new Command(async () => await Volver());
         //public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
 
-        public void MostrarUsuarios()
+        public void MostrarPaginas()
         {
-            listaUsuarios = new List<Mmenuprincipal> {
+            listapaginas = new List<MenuPrincipal> {
 
-                new Mmenuprincipal
+                new MenuPrincipal
                 {
                     Pagina = "Entry, datepicker, picker, label, navegacion",
                     Icono = "https://ibb.co/fNLJWPg"
                 },
 
-                new Mmenuprincipal
+                new MenuPrincipal
                 {
                     Pagina = "CollectionView sin enlace a Base de datos",
                     Icono = "https://ibb.co/W2f0CTq"
                 },
 
-                new Mmenuprincipal
+                new MenuPrincipal
                 {
                     Pagina = "Crud pokemon",
                     Icono = "https://ibb.co/QXGrdNY"
@@ -66,7 +73,7 @@ namespace Implementando_MVVM_3.VistaModel
             };
         }
 
-        public async Task Navegar(Mmenuprincipal parametros)
+        public async Task Navegar(MenuPrincipal parametros)
         {
             string pagina;
             pagina = parametros.Pagina;
@@ -84,13 +91,9 @@ namespace Implementando_MVVM_3.VistaModel
             }
 
         }
-        public ICommand Navegarcommand => new Command<Mmenuprincipal>(async (p) => await Navegar(p));
+        public ICommand Navegarcommand => new Command<MenuPrincipal>(async (p) => await Navegar(p));
 
         #endregion
-        public class Mmenuprincipal
-        {
-            public string Pagina { get; set; }
-            public string Icono { get; set; }
-        }
+
     }
 }

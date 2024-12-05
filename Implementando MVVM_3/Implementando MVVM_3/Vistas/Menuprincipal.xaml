@@ -7,7 +7,14 @@
         <CollectionView ItemsSource="{Binding listapaginas}"
                         VerticalOptions="Center"
                         Margin="20,80,20,0"
-                        x:Name="ListaUser">
+                        x:Name="ListaPaginas">
+            <CollectionView.Header>
+                <StackLayout>
+                    <Label Text="Paginas"
+                           FontAttributes="Bold"
+                           FontSize="30"/>
+                </StackLayout>
+            </CollectionView.Header>
             
             <CollectionView.ItemsLayout>
                 
@@ -32,13 +39,12 @@
                             <Label Text="{Binding Pagina}"
                                    VerticalOptions="Center"
                                    FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="White"/>
+                                   FontAttributes="Bold"/>
                         </StackLayout>
 
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Path=BindingContext.Navegarcommand, 
-                                    Source={x:Reference Listauser}}"
+                                    Source={x:Reference ListaPaginas}}"
                                                   CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                     </Frame>

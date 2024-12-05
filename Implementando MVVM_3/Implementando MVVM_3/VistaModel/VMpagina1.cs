@@ -15,12 +15,17 @@ namespace Implementando_MVVM_3.VistaModel
         string _N1;
         string _N2;
         string _R;
+        string _Tipousuario;
+        DateTime _Fecha;
+        string _ResultadoFecha;
+
         #endregion
         #region CONTRUCTOR
 
         public VMpagina1(INavigation navigation)
         {
             Navigation = navigation;
+            Fecha = DateTime.Now;
         }
 
         #endregion
@@ -42,6 +47,34 @@ namespace Implementando_MVVM_3.VistaModel
             get { return R; }
             set { SetValue(ref _R, value); }
         }
+        public string Tipousuario
+        {
+            get { return _Tipousuario; }
+            set { SetValue(ref _Tipousuario, value); }
+        }
+        public string SeleccionarTipouser
+        {
+            get { return _Tipousuario; }
+            set
+            {
+                SetProperty(ref _Tipousuario, value);
+                Tipousuario = _Tipousuario;
+            }
+        }
+        public string Resultadofecha
+        {
+            get { return _ResultadoFecha; }
+            set { SetValue(ref _ResultadoFecha, value); }
+        }
+        public DateTime Fecha
+        {
+            get { return _Fecha; }
+            set
+            {
+                SetValue(ref _Fecha, value);
+                Resultadofecha = _Fecha.ToString("dd/MM/yyyy");
+            }
+        }
 
         //public string Mensaje
         //{
@@ -50,11 +83,15 @@ namespace Implementando_MVVM_3.VistaModel
         //}
 
         #endregion
-        #region PROCESOS
 
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
         public async Task NavegarPagina2()
         {
-            await Navigation.PushAsync(new Page2());
+            await Navigation.PushAsync(new Pagina2());
         }
 
         public void Sumar()
@@ -80,6 +117,8 @@ namespace Implementando_MVVM_3.VistaModel
 
         public ICommand PNavegarPagina2command => new Command(async () => await NavegarPagina2());
         public ICommand Suymarcommand => new Command(Sumar);
+        public ICommand Volvercommand => new Command(async () => await Volver());
+
         #endregion
     }
 }

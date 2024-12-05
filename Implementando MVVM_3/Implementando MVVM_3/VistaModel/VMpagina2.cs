@@ -10,26 +10,32 @@ namespace Implementando_MVVM_3.VistaModel
 {
     public class VMpagina2 : BaseViewModel
     {
+        #region VARIABLES
+
         private string _Texto;
 
         public List<Musuarios> listaUsuarios { get; set; }
 
-        #region CONSTRUCTOR
-
-        public VMpagina2()
-        {
-            MostrarUsuarios();
-        }
         #endregion
+
+        #region CONSTRUCTOR
 
         public VMpagina2(INavigation navigation)
         {
             Navigation = navigation;
             MostrarUsuarios();
         }
+        #endregion
 
         #region COMANDOS 
-   
+
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
         public void MostrarUsuarios()
         {
             listaUsuarios = new List<Musuarios> {
@@ -56,7 +62,7 @@ namespace Implementando_MVVM_3.VistaModel
 
         public async Task Volver()
         {
-
+            await Navigation.PopAsync();
         }
 
         public ICommand Volvercommand => new Command(async () => await Volver());
@@ -68,13 +74,5 @@ namespace Implementando_MVVM_3.VistaModel
 
         public ICommand Alertacommand => new Command<Musuarios>(async (p) => await Alerta(p));
     }
-    #endregion
 
-    public class Musuarios
-    {
-        public string Nombre { get; set; }
-
-        public string Imagen { get; set; }
-
-    }
 }
