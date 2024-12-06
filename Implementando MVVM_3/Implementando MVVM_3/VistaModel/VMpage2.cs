@@ -14,7 +14,7 @@ namespace Implementando_MVVM_3.VistaModel
         #endregion
         #region CONTSRUCTOR
 
-        public VMpatron(INavigation navigation)
+        public VMpage2(INavigation navigation)
         {
             Navigation = navigation;
         }
