@@ -65,7 +65,7 @@
                         PlaceholderColor="White"
                         TextTransform="Lowercase"
                        HorizontalOptions="StartAndExpand"
-                       Text="{Binding Txtnro}"/>
+                       Text="{Binding TxtNroOrden}"/>
 
             </StackLayout>
 
@@ -144,7 +144,7 @@
                     
                     <StackLayout Margin="0,70,0,0">
 
-                        <Label Text="{Binding Txtnro}"  TextColor="Black"/>
+                        <Label Text="{Binding TxtNroOrden}"  TextColor="Black"/>
 
                         <Label Text="{Binding Txtnombre}"
                                CharacterSpacing="1"

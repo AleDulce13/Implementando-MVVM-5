@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Implementando_MVVM_3.Model;
+using Implementando_MVVM_3.Datos;
 using Xamarin.Forms;
 
 namespace Implementando_MVVM_3.VistaModel.VMpokemon
@@ -14,7 +16,7 @@ namespace Implementando_MVVM_3.VistaModel.VMpokemon
         string _Txtcolorfondo;
         string _Txtcolorpoder;
         string _Txtnombre;
-        string _Txtnro;
+        string _TxtNroOrden;
         string _Txtpoder;
         string _Txticono;
 
@@ -47,10 +49,10 @@ namespace Implementando_MVVM_3.VistaModel.VMpokemon
             get { return _Txtnombre; }
             set { SetValue(ref _Txtnombre, value); }
         }
-        public string Txtnro
+        public string TxtNroOrden
         {
-            get { return _Txtnro; }
-            set { SetValue(ref _Txtnro, value); }
+            get { return _TxtNroOrden; }
+            set { SetValue(ref _TxtNroOrden, value); }
         }
         public string Txtpoder
         {
@@ -66,10 +68,26 @@ namespace Implementando_MVVM_3.VistaModel.VMpokemon
 
         #region PROCESOS
 
-        public async Task ProcesoAsyncrono()
+        public async Task Insertar()
         {
+            var funcion = new Dpokemon();
+            var parametros = new Mpokemon();
 
+            parametros.Colorfondo = Txtcolorfondo;
+            parametros.Colorpoder = Txtcolorpoder;
+            parametros.Icono = Txticono;
+            parametros.Nombre = Txtnombre;
+            parametros.NroOrden = TxtNroOrden;
+            parametros.Poder = Txtpoder;
+
+            await funcion.Insertarpokemon(parametros);
+            await Volver();
         }
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+
         public void ProcesoSimple()
         {
 
@@ -78,8 +96,9 @@ namespace Implementando_MVVM_3.VistaModel.VMpokemon
 
         #region COMANDOS
 
-        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
-        public ICommand ProcesoSicommand => new Command(ProcesoSimple);
+        public ICommand Insertarcommand => new Command(async () => await Insertar());
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        public ICommand Volvercommand => new Command(async () => await Volver());
         #endregion
     }
 }

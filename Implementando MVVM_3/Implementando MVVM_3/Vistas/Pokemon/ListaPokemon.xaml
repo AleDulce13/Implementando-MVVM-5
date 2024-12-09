@@ -37,7 +37,7 @@
                                HasShadow="False">
                             <StackLayout
                         Margin="0,105,0,0">
-                                <Label Text="{Binding Nroorden}"/>
+                                <Label Text="{Binding NroOrden}"/>
                                 <Label Text="{Binding Nombre}"
                                CharacterSpacing="1"
                                FontSize="20"
